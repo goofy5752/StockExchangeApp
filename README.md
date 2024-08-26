@@ -136,7 +136,7 @@ Ensure that all necessary NuGet packages are restored:
 
 ##### Step 3: Update `appsettings.json`
 
-Edit the `appsettings.json` file in the `PortfolioApi`, `PortfolioServices`, etc., to configure your local environment:
+Edit the `appsettings.json` file in the `PortfolioApi`, to configure your local environment:
 
 *   **Connection Strings**: Update the `DefaultConnection` to point to your local machine's SQL Server instance.
 
@@ -176,7 +176,7 @@ Ensure that all necessary NuGet packages are restored:
 
 `dotnet restore`
 
-**Note**: The Price Service does not use a database, so you do not need to update any database connection strings or run migrations for this service.
+**Note**: The Price Service does not use a database, so you need not update any database connection strings or run migrations for this service.
 
 ##### Step 4: Run the Price Service
 
