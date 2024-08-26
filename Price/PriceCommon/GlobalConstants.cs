@@ -7,5 +7,7 @@
         public const string PriceExchangeName = "price_exchange";
 
         public const string HostName = "localhost";
+
+        public const string CacheKeyPrefix = "StockPrice:";
     }
 }

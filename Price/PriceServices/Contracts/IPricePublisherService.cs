@@ -4,6 +4,6 @@ namespace PriceServices.Contracts
 {
     public interface IPricePublisherService
     {
-        void PublishPrice(StockPrice price);
+        Task PublishPrice(StockPrice price);
     }
 }
