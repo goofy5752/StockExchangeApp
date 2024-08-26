@@ -1,5 +1,3 @@
-using System.Collections.Concurrent;
-
 using Microsoft.EntityFrameworkCore;
 
 using OrderData;
@@ -16,9 +14,6 @@ namespace OrderApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            var latestPrices = new ConcurrentDictionary<string, decimal>();
-            builder.Services.AddSingleton(latestPrices);
-
             builder.Services.AddControllers();
 
             builder.Services.AddDbContext<OrderDbContext>(options =>
@@ -29,7 +24,11 @@ namespace OrderApi
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IOrderPublisherService, OrderPublisherService>();
 
-            builder.Services.AddHostedService<PriceConsumerService>();
+            builder.Services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = builder.Configuration["Redis:Configuration"];
+                options.InstanceName = builder.Configuration["Redis:InstanceName"];
+            });
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
