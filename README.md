@@ -74,6 +74,21 @@ Before running the projects, ensure that you have the following software install
         
     *   **RabbitMQ Management Console**: Accessible at `http://localhost:15672` with default credentials (`guest`/`guest`).
 
+### Setting Up Redis
+
+#### Using Docker
+1.  Download Redis through PowerShell CLI
+
+	`docker pull redis`
+
+2.  Run Redis using Docker:
+    
+    `docker run -d --name redis -p 6379:6379 redis`
+    
+3.  Verify that Redis is running:
+    
+    Run `docker exec -it redis redis-cli` and after that you should type `ping` and if the Redis is running you should receive `PONG` in return.
+
 ### Running the Services
 
 Each service can be run individually. Below are the steps to run each service:
@@ -188,4 +203,5 @@ This will start the Price Service, which will generate and broadcast stock price
 
 *   **RabbitMQ Connection Issues**: Ensure RabbitMQ is running and accessible at the configured `HostName`. Check the RabbitMQ management console for any issues.
 *   **Database Connection Issues**: Ensure that your database is up and running. Verify the connection strings in `appsettings.json`.
+*   **Redis Connection Issues**: Ensure Redis is running and accessible at `localhost:6379`. You can test the connection using `redis-cli` or a GUI tool like RedisInsight.
 *   **Port Conflicts**: Ensure that each service is running on a different port, or configure them to avoid conflicts.
